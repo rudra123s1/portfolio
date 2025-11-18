@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Alex Mercer | Lead Software Architect Portfolio</title>
+    <!-- Basic CSS3 Styling - No external frameworks or JS -->
+    <style>
+        /* === 1. Base Setup === */
+        :root {
+            --color-dark: #1f2937;
+            --color-light: #f9fafb;
+            --color-accent: #4f46e5;
+            --color-secondary-dark: #374151;
+            --color-text-light: #d1d5db;
+            --font-family: 'Arial', sans-serif;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-light);
+            background-color: var(--color-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #818cf8; /* Lighter accent on hover */
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--color-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            width: 50px;
+            height: 4px;
+            background-color: var(--color-accent);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        /* === 2. Header and Navigation === */
+        header {
+            background-color: var(--color-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--color-text-light);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-out, left 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Hidden mobile menu icon */
+        .menu-icon {
+            display: none;
+        }
+
+        /* === 3. Hero Section === */
+        #hero {
+            background-color: var(--color-secondary-dark);
+            padding: 6rem 0;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 2;
+        }
+
+        .hero-text p:first-child {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-text p:last-of-type {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-accent);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-light);
+            border: 2px solid var(--color-accent);
+            margin-right: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #3730a3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-accent);
+            color: var(--color-light);
+            transform: translateY(-2px);
+        }
+
+        /* === 4. About Me Section === */
+        #about, #skills, #projects, #experience, #contact {
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        .stat-card {
+            background-color: var(--color-secondary-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 5px solid var(--color-accent);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 1.1rem;
+            color: var(--color-light);
+        }
+
+        /* === 5. Skills Section === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--color-secondary-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            background-color: #4b5563; /* Slightly lighter dark */
+            transform: scale(1.02);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category h3::before {
+            content: '★'; /* Simple character icon placeholder */
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            color: var(--color-accent);
+        }
+
+        .skill-list li {
+            list-style: none;
+            color: var(--color-text-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed #374151;
+            font-size: 1rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* === 6. Projects Section === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--color-secondary-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image-placeholder {
+            height: 200px;
+            background-color: #4f46e555; /* Transparent accent background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-light);
+            text-align: center;
+            border-bottom: 3px solid var(--color-accent);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            color: var(--color-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* === 7. Experience Section (Timeline) === */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-secondary-dark);
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background-color: var(--color-secondary-dark);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            border-right: 5px solid var(--color-accent);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .timeline-date {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            color: var(--color-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* The circle marker */
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            border: 4px solid var(--color-dark);
+        }
+        
+        /* Hide markers and content for odd items for better mobile stacking */
+        .timeline-item:nth-child(odd) .timeline-marker {
+            left: 0;
+        }
+
+        /* === 8. Contact Section === */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background-color: var(--color-secondary-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-light);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #4b5563;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .contact-info-block {
+            padding-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item .icon {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-right: 1rem;
+            width: 30px; /* fixed width for alignment */
+        }
+        
+        .contact-item p {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            color: var(--color-text-light);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* === 9. Footer === */
+        footer {
+            background-color: #111827;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* REMOVED @media (max-width: 992px) for fixed layout */
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">Shivank<span style="color:var(--color-accent);">.DEV</span></div>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="menu-icon">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <p>Hello, I'm Alex Mercer</p>
+                        <h1>
+                            Building the Future as a <br>
+                            <span>Software Architect</span>
+                        </h1>
+                        <p>
+                            I design and implement scalable, high-performance distributed systems, specializing in cloud-native solutions and clean architecture.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">View Portfolio</a>
+                            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <!-- Placeholder Profile Image -->
+                        <img src="/er.png" alt="Alex Mercer Profile Photo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Me Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">
+                    A deep dive into my passion, philosophy, and professional background.
+                </p>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            With over 12 years of hands-on experience, I have transitioned from a full-stack developer to a Lead Software Architect. My journey has centered on **system resilience**, **scalability**, and **developer experience (DX)**. I believe that elegant code and robust infrastructure are two sides of the same coin.
+                        </p>
+                        <p>
+                            I am an expert in modern cloud computing patterns (Serverless, Microservices) and have successfully led multiple large-scale system migrations, resulting in significant cost savings and performance improvements for global clients.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h3>12+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-card" style="margin-top: 1.5rem;">
+                            <h3>20+</h3>
+                            <p>Major Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section -->
+        <section id="skills" style="background-color: var(--color-secondary-dark);">
+            <div class="container">
+                <h2>Technical Expertise</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">
+                    Core technologies and tools I use to architect and build solutions.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Cloud & DevOps</h3>
+                        <ul class="skill-list">
+                            <li>AWS (EC2, Lambda, S3, RDS, DynamoDB)</li>
+                            <li>Terraform & CloudFormation</li>
+                            <li>Docker & Kubernetes (EKS/GKE)</li>
+                            <li>CI/CD (GitLab CI, GitHub Actions)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend & Data</h3>
+                        <ul class="skill-list">
+                            <li>Node.js / TypeScript</li>
+                            <li>Go (Golang) for high performance services</li>
+                            <li>PostgreSQL & MongoDB</li>
+                            <li>Kafka & RabbitMQ (Message Queuing)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend & UI/UX</h3>
+                        <ul class="skill-list">
+                            <li>React (Expert) & Vue.js</li>
+                            <li>HTML5 & Advanced CSS3 techniques</li>
+                            <li>State Management (Redux, Zustand)</li>
+                            <li>Accessibility (WCAG)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2>Featured Work</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">
+                    A selection of impactful projects showcasing scale and complexity.
+                </p>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            CLOUD ARCHITECTURE PLATFORM
+                        </div>
+                        <div class="project-info">
+                            <h3>Distributed Fintech Platform</h3>
+                            <span class="tech-tags">Node.js, Kafka, PostgreSQL, AWS Lambda, Go</span>
+                            <p>
+                                Designed and implemented a compliant, low-latency trading engine capable of processing 10,000 transactions per second via an event-driven microservices architecture.
+                            </p>
+                            <a href="/first.html" class="btn btn-secondary" style="border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.9rem;">View Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder" style="background-color: #f59e0b55;">
+                            REAL-TIME DASHBOARD
+                        </div>
+                        <div class="project-info">
+                            <h3>Real-time Data Visualization Tool</h3>
+                            <span class="tech-tags">React, D3.js, WebSockets, MongoDB, Docker</span>
+                            <p>
+                                Developed a single-page application for monitoring global logistics. Optimized data retrieval pipelines to reduce dashboard load time from 8s to under 1s.
+                            </p>
+                            <a href="/sec.html" class="btn btn-secondary" style="border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.9rem;">View Live Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder" style="background-color: #10b98155;">
+                            MOBILE-FIRST API
+                        </div>
+                        <div class="project-info">
+                            <h3>Serverless Mobile Backend</h3>
+                            <span class="tech-tags">AWS API Gateway, DynamoDB, Python, Terraform</span>
+                            <p>
+                                Built a fully automated, cost-efficient serverless backend for a new B2C mobile application. Achieved 99.9% uptime and auto-scaling capabilities.
+                            </p>
+                            <a href="/te.html" class="btn btn-secondary" style="border-radius: 4px; padding: 0.5rem 1rem; font-size: 0.9rem;">View Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Experience & Education Section (Timeline) -->
+        <section id="experience" style="background-color: var(--color-secondary-dark);">
+            <div class="container">
+                <h2>Professional Journey</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">
+                    A chronological history of my professional roles and academic achievements.
+                </p>
+
+                <div class="timeline">
+                    <!-- Item 1: Job -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2018 - Present</div>
+                            <h3>Lead Software Architect</h3>
+                            <p>GlobalTech Systems, New York, NY</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Led architecture for $5M project, mentoring 10 engineers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Job -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2014 - 2018</div>
+                            <h3>Senior Full Stack Developer</h3>
+                            <p>Innovate Web Solutions, Boston, MA</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Core contributor to 4 major client projects using Java/Spring and React.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Education -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2010 - 2014</div>
+                            <h3>M.S. Computer Science</h3>
+                            <p>Massachusetts Institute of Technology (MIT)</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Specialization in Distributed Systems and Cryptography.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="divider"></div>
+                <p class="section-subtitle">
+                    I am currently open to new architectural consulting opportunities.
+                </p>
+
+                <div class="contact-grid">
+                    <!-- Form (Static Mock) -->
+                    <div class="contact-form">
+                        <h3 style="color: var(--color-light); font-size: 1.5rem; margin-bottom: 1.5rem;">Send a Quick Inquiry</h3>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <label for="c_name">Name</label>
+                                <input type="text" id="c_name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c_email">Email</label>
+                                <input type="email" id="c_email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="c_message">Message</label>
+                                <textarea id="c_message" name="message" rows="5" required></textarea>
+                            </div>
+                            <!-- Static button since no JS submission is allowed -->
+                            <button type="submit" class="btn btn-primary" style="width: 100%; border: none;">
+                                Send Message (Static Demo)
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Details & Socials -->
+                    <div class="contact-info-block">
+                        <h3 style="color: var(--color-light); font-size: 1.5rem; margin-bottom: 1.5rem;">My Details</h3>
+
+                        <div class="contact-item">
+                            <span class="icon">📧</span>
+                            <p>alex.mercer.architect@email.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📞</span>
+                            <p>(555) 987-6543</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📍</span>
+                            <p>New York, NY, USA</p>
+                        </div>
+
+                        <div class="social-links">
+                            <!-- Simple text placeholders for social icons -->
+                            <a href="https://www.linkedin.com/in/shivank-singh-611a30380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">in</a>
+                            <a href="https://github.com/shivankthakurdilari-create" target="_blank">git</a>
+                            <a href="https://twitter.com" target="_blank">x</a>
+                            <a href="https://stackoverflow.com" target="_blank">s/o</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alex Mercer | Software Architect Portfolio.</p>
+            <p style="margin-top: 0.5rem; color: #6b7280;">Built with Pure HTML & CSS3.</p>
+        </div>
+    </footer>
+</body>
+</html>

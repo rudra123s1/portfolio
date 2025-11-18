@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Distributed Fintech Platform</title>
+    <!-- Basic CSS3 Styling - Inherited from Main Portfolio -->
+    <style>
+        /* === Base Setup === */
+        :root {
+            --color-dark: #1f2937;
+            --color-light: #f9fafb;
+            --color-accent: #4f46e5;
+            --color-secondary-dark: #374151;
+            --color-text-light: #d1d5db;
+            --font-family: 'Arial', sans-serif;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-light);
+            background-color: var(--color-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #818cf8;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--color-light);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            width: 50px;
+            height: 4px;
+            background-color: var(--color-accent);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        /* Project Content Styling */
+        #project-detail {
+            padding: 5rem 0;
+        }
+
+        .detail-header {
+            background-color: var(--color-secondary-dark);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .detail-header h1 {
+            font-size: 3rem;
+            color: var(--color-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-header p {
+            color: var(--color-text-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background-color: var(--color-accent);
+            color: var(--color-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .content-section {
+            background-color: var(--color-secondary-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .content-section p,
+        .content-section ul {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            list-style: disc;
+            padding-left: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background-color: var(--color-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 3px solid #10b981;
+            /* Green success color */
+        }
+
+        .result-card h4 {
+            font-size: 2rem;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .result-card p {
+            color: var(--color-light);
+            font-size: 1rem;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .detail-header {
+                padding: 2rem 1rem;
+            }
+
+            .detail-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="background-color: var(--color-dark); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: var(--color-light);">Shivank<span
+                    style="color:var(--color-accent);">.DEV</span></div>
+            <a href="index.html" style="color: var(--color-accent); font-weight: 600;">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="project-detail">
+            <div class="container">
+
+                <div class="detail-header">
+                    <h1>Distributed Fintech Platform</h1>
+                    <p>Building a compliant, high-frequency trading engine from the ground up.</p>
+                    <div class="tag-list">
+                        <span class="tag">Microservices</span>
+                        <span class="tag">Event-Driven</span>
+                        <span class="tag">High-Performance</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Go</span>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2>The Challenge</h2>
+                    <div style="height: 2px; width: 40px; background-color: var(--color-accent); margin-bottom: 1rem;">
+                    </div>
+                    <p>
+                        The client needed to replace a legacy, monolithic trading system that suffered from high latency
+                        and lacked the scalability to handle increased market volatility and user growth. The new system
+                        had to be fully **auditable, highly concurrent**, and maintain **millisecond-level latency** for
+                        trade execution.
+                    </p>
+
+                    <h3>Architectural Solution</h3>
+                    <p>
+                        I designed a distributed, event-sourcing architecture using **Kafka** as the central message
+                        bus. This decoupled the core services (Order Matching, Account Ledger, Market Data Ingestion)
+                        allowing independent scaling and fault tolerance. Go was utilized for the Order Matching Service
+                        for its superior concurrency model and raw speed.
+                    </p>
+                    <p style="color: #f59e0b; font-weight: 600;">Key Technologies:</p>
+                    <ul>
+                        <li>**Backend:** Node.js (API Gateway, Microservices), Go (Critical Services)</li>
+                        <li>**Messaging:** Apache Kafka for asynchronous communication and event logging.</li>
+                        <li>**Database:** PostgreSQL (Transactional Ledger), Redis (Caching and Session Management).
+                        </li>
+                        <li>**Deployment:** Automated via Terraform on AWS ECS and Lambda.</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2>Results and Impact</h2>
+                    <div style="height: 2px; width: 40px; background-color: var(--color-accent); margin-bottom: 1rem;">
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4>10,000+</h4>
+                            <p>Transactions per Second (TPS)</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>99.99%</h4>
+                            <p>System Uptime Achieved</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>45%</h4>
+                            <p>Reduction in Operational Latency</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem;">
+                        The new platform not only met the performance requirements but established a robust foundation
+                        for future financial product expansion and compliance reporting. The decoupled architecture
+                        drastically reduced the risk profile of critical updates.
+                    </p>
+                </div>
+
+                <div class="back-link">
+                    <a href="index.html" class="btn btn-primary" style="border-radius: 4px;">&larr; Return to Portfolio
+                        Overview</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer
+        style="background-color: #111827; padding: 2rem 0; text-align: center; color: var(--color-text-light); font-size: 0.9rem;">
+        <div class="container">
+            <p>&copy; 2025 Alex Mercer | Software Architect Portfolio.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
